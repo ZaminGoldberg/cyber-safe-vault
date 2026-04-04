@@ -1,0 +1,288 @@
+:root {
+    --cyan: #00f2fe;
+    --green: #4ade80;
+    --red: #ef4444;
+    --dark-bg: #000000;
+    --card-bg: rgba(10, 10, 10, 0.85);
+    --hologram-text: #b0b0b0;
+    --accent: rgba(0, 242, 254, 0.1);
+    --font: 'Rajdhani', sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    background-image: radial-gradient(circle at 10% 20%, #0d1117 0%, #000000 90%);
+    color: var(--hologram-text);
+    font-family: var(--font);
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* Arxa fondakı neon tor effekti */
+.cyber-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.container {
+    width: 100%;
+    max-width: 950px;
+    position: relative;
+    z-index: 10;
+    animation: bootUp 1.2s ease-out;
+}
+
+@keyframes bootUp {
+    from { opacity: 0; transform: scale(0.9) translateY(40px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* CYBER-SAFE Glitch effekti */
+.glitch {
+    font-size: 60px;
+    font-weight: 700;
+    color: var(--cyan);
+    position: relative;
+    margin: 0;
+    text-shadow: 0 0 15px var(--cyan);
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0.8;
+}
+
+.glitch::before {
+    color: #ff00ff; /* Magenta */
+    z-index: -1;
+    animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+
+.glitch::after {
+    color: #00ffff; /* Cyan light */
+    z-index: -2;
+    animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-3px, 3px); }
+    40% { transform: translate(-3px, -3px); }
+    60% { transform: translate(3px, 3px); }
+    80% { transform: translate(3px, -3px); }
+    100% { transform: translate(0); }
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.auth-header p {
+    color: var(--green);
+    font-size: 12px;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+.auth-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* Hologram Kart Dizaynı */
+.cyber-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(0, 242, 254, 0.15);
+    padding: 30px;
+    border-radius: 5px; /* Müasir dizaynda elit kəskinlik */
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.cyber-card::after {
+    content: '';
+    position: absolute; bottom: 0; right: 0;
+    width: 20px; height: 20px;
+    background: linear-gradient(135deg, transparent 50%, var(--cyan) 50%);
+    opacity: 0.3;
+}
+
+.cyber-card:hover {
+    border-color: rgba(0, 242, 254, 0.5);
+    box-shadow: 0 0 50px rgba(0, 242, 254, 0.15);
+}
+
+h3 {
+    margin-top: 0;
+    color: #fff;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-left: 3px solid var(--cyan);
+    padding-left: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 16px;
+    margin: 15px 0;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+    color: #fff;
+    font-family: 'Courier New', monospace; /* Monospace inputlar */
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--cyan);
+    background: var(--accent);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Elit Düymələr */
+button {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: var(--font);
+    letter-spacing: 2px;
+}
+
+.btn-cyan {
+    background: var(--accent);
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+
+.btn-cyan:hover {
+    background: var(--cyan);
+    color: #000;
+    box-shadow: 0 0 30px var(--cyan);
+}
+
+.btn-green {
+    background: rgba(74, 222, 128, 0.1);
+    border-color: var(--green);
+    color: var(--green);
+}
+
+.btn-green:hover {
+    background: var(--green);
+    color: #000;
+    box-shadow: 0 0 30px var(--green);
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.main-header h2 {
+    color: #fff;
+    margin: 0;
+}
+
+.accent {
+    color: var(--cyan);
+}
+
+.btn-logout {
+    background: rgba(239, 108, 108, 0.1);
+    border: 1px solid var(--red);
+    color: var(--red);
+    padding: 8px 16px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-logout:hover {
+    background: var(--red);
+    color: #fff;
+}
+
+/* Elit Cədvəl Dizaynı */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+th {
+    padding: 15px;
+    text-align: left;
+    color: var(--cyan);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+td {
+    padding: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    font-size: 15px;
+}
+
+.site-col {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Kod Bloku (Parollar) */
+.cyber-code {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 3px;
+    color: #fbbf24; /* Sarı rəngdə şifrə mətni */
+    font-family: 'Courier New', monospace;
+    transition: 0.2s;
+}
+
+.cyber-code:hover {
+    background: var(--cyan);
+    color: #000;
+}
+
+.error-text { color: var(--red); font-size: 12px; text-align: center; }
+.success-text { color: var(--green); font-size: 12px; text-align: center; }
